@@ -1,0 +1,13 @@
+<Task@MDRelativeLayout>:
+    borderColor: [1.0, 0.6274509803921569, 0.0, 1.0]
+    size_hint: (None, None)
+    radius: 20
+    width: dp(330)
+    height: dp(120)
+    canvas.after:
+        Color:
+            group: "ololo"
+            rgb: self.borderColor
+        Line:
+            group: "ololo"
+            rounded_rectangle: self.pos[0], self.pos[1], self.width, self.height, 20
