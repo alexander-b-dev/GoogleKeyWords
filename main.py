@@ -1,4 +1,7 @@
 import multiprocessing
+
+import config
+
 if __name__ == '__main__':
     multiprocessing.freeze_support()
     import os.path
@@ -22,8 +25,10 @@ if __name__ == '__main__':
     class GoogleKeyWordsApp(MDApp):
         def __init__(self):
             super().__init__()
+            self.theme_cls.theme_style = "Dark"
+            self.theme_cls.primary_palette = "Amber"
             Builder.load_file('task.kv')
-            self.customerId = "4231300792"
+            self.customerId = config.customerId
             self.googleads_client = GoogleAdsClient.load_from_storage(path="google-ads.yaml", version="v12")
             self.tasksAdder = AddTask(self.theme_cls,
                                       self.addTaskCallback,
@@ -43,8 +48,6 @@ if __name__ == '__main__':
                                    halign="center")
 
         def build(self):
-            self.theme_cls.theme_style = "Dark"
-            self.theme_cls.primary_palette = "Amber"
             Window.size = (dp(350), dp(700))
             self.root = MDFloatLayout(radius=[15, 15, 15, 15],
                                       size_hint=(0.98, 0.98),

@@ -145,12 +145,13 @@ class Task(MDRelativeLayout):
 
     def done(self):
         xlFile = pylightxl.Database()
-        for count, res in enumerate(self.doneData, start=0):
-            sheetName = self.keyWords[count]
-            xlFile.add_ws(ws=sheetName)
-            for rowNum, idea in enumerate(res, start=1):
-                xlFile.ws(ws=sheetName).update_index(row=rowNum, col=1, val=idea[0])
-                xlFile.ws(ws=sheetName).update_index(row=rowNum, col=2, val=idea[1])
+        xlFile.add_ws(ws="Sheet1")
+        rowNum = 1
+        for count, res in enumerate(self.doneData, start=1):
+            for idea in res:
+                xlFile.ws(ws="Sheet1").update_index(row=rowNum, col=1, val=idea[0])
+                xlFile.ws(ws="Sheet1").update_index(row=rowNum, col=2, val=idea[1])
+                rowNum += 1
         pylightxl.writexl(db=xlFile, fn=os.path.join(self.folder, "%s.%s" % (self.name, "xlsx")))
         self.logger.info("File saved: %s" % os.path.join(self.folder, "%s.%s" % (self.name, "xlsx")))
         self.guiDone()

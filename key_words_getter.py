@@ -39,7 +39,8 @@ def getData(queue, googleCustomerID, language, regions, periodFrom, periodTo, in
                                                                                      initial=4,
                                                                                      maximum=64,
                                                                                      multiplier=1.5,
-                                                                                     deadline=420))
+                                                                                     deadline=420)
+                                                                         )
             res = []
             for idea in keywordIdeas:
                 res.append((idea.text, idea.keyword_idea_metrics.avg_monthly_searches))
