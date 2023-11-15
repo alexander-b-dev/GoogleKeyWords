@@ -29,7 +29,7 @@ if __name__ == '__main__':
             self.theme_cls.primary_palette = "Amber"
             Builder.load_file('task.kv')
             self.customerId = config.customerId
-            self.googleads_client = GoogleAdsClient.load_from_storage(path="google-ads.yaml", version="v12")
+            self.googleads_client = GoogleAdsClient.load_from_storage(path="google-ads.yaml", version="v13")
             self.tasksAdder = AddTask(self.theme_cls,
                                       self.addTaskCallback,
                                       self.googleads_client.get_service("GoogleAdsService"),

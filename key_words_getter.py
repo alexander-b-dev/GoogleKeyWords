@@ -8,7 +8,7 @@ from google.api_core.retry import Retry
 
 def getData(queue, googleCustomerID, language, regions, periodFrom, periodTo, inclPartners, inclNSFW, keyWords):
     try:
-        client = GoogleAdsClient.load_from_storage(path="google-ads.yaml", version="v12")
+        client = GoogleAdsClient.load_from_storage(path="google-ads.yaml", version="v13")
         keywordPlanIdeaService = client.get_service("KeywordPlanIdeaService")
         lang = client.get_service("GoogleAdsService").language_constant_path(language)
         queue.put("language")
